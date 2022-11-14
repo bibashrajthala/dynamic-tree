@@ -68,7 +68,7 @@ tree.add("Laptop", null);
 // tree.add("Adobe", "Program Files");
 // tree.add("Acer", "Users");
 
-console.log(tree.findBFS("Laptop"));
+// console.log(tree.findBFS("Laptop"));
 // console.log(tree.findBFS("Test"));
 // console.log(tree.findBFS("Node3"));
 

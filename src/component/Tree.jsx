@@ -8,10 +8,15 @@ const Tree = ({ data, children }) => {
   }, [showChildren, setShowChildren]);
   const childHandler = (e) => {
     const text = e.target.textContent;
-    localStorage.setItem("node", text);
+    if (text.includes("🔰")) {
+      localStorage.setItem("disable", "true");
+    } else {
+      localStorage.setItem("disable", "false");
+      localStorage.setItem("node", text);
+    }
   };
   return (
-    <div>
+    <div style={{ width: "48vw", height: "100%" }}>
       <span onClick={handleClick}>
         <h4
           onClick={childHandler}

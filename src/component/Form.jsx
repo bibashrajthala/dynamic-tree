@@ -14,6 +14,12 @@ const AddNodes = ({ setTraversedData, node }) => {
   };
   const nodeHandler = () => {
     const value = localStorage.getItem("node") || null;
+    const disable = localStorage.getItem("disable");
+
+    if (disable === "true") {
+      return alert("cannot add further node or leaf to leaf");
+    }
+
     if (value) {
       newNode.add(title, value);
       const x = newNode.findBFS(value);
@@ -48,6 +54,12 @@ const AddNodes = ({ setTraversedData, node }) => {
   };
   const leafHandler = () => {
     const value = localStorage.getItem("node") || null;
+    const disable = localStorage.getItem("disable");
+
+    if (disable === "true") {
+      return alert("cannot add further node or leaf to leaf");
+    }
+
     if (value) {
       newNode.add(leafTitle, value);
       const x = newNode.findBFS(value);
@@ -62,7 +74,17 @@ const AddNodes = ({ setTraversedData, node }) => {
     }
   };
   return (
-    <div>
+    <div
+      style={{
+        width: "48vw",
+        backgroundColor: "#aaa8a8",
+        height: "80vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <div>
         <input
           onChange={titleHandler}
@@ -70,18 +92,52 @@ const AddNodes = ({ setTraversedData, node }) => {
           name=""
           id=""
           placeholder="Node title"
+          style={{
+            padding: "5px",
+            border: "1px solid #f3f3g5",
+            borderRadius: "5px",
+          }}
         />
-        <button onClick={nodeHandler}> Add Node</button>
+        <button
+          onClick={nodeHandler}
+          style={{
+            marginLeft: "1rem",
+            backgroundColor: "black",
+            color: "white",
+            width: "9rem",
+            borderRadius: "5px",
+          }}
+        >
+          {" "}
+          Add Node
+        </button>
       </div>
-      <div>
+      <div style={{ marginTop: "1rem" }}>
         <input
           onChange={leafTitleHandler}
           type="text"
           name=""
           id=""
           placeholder="Leaf title"
+          style={{
+            padding: "5px",
+            border: "1px solid #f3f3g5",
+            borderRadius: "5px",
+          }}
         />
-        <button onClick={leafHandler}> Add Leaf</button>
+        <button
+          onClick={leafHandler}
+          style={{
+            marginLeft: "1rem",
+            backgroundColor: "black",
+            color: "white",
+            width: "9rem",
+            borderRadius: "5px",
+          }}
+        >
+          {" "}
+          Add Leaf
+        </button>
       </div>
     </div>
   );
